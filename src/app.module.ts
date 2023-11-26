@@ -21,8 +21,12 @@ import { MembersModule } from './member/member.module';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
         entities: [join(process.cwd(), 'dist/**/*.entity.js')],
+        migrations: [join(process.cwd(), 'dist/migration/*.js')],
         // do NOT use synchronize: true in real projects
-        synchronize: true,
+        synchronize: false,
+        logging: true,
+        logger: 'advanced-console',
+        migrationsRun: true,
       }),
     }),
     MembersModule,
