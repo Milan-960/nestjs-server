@@ -1,5 +1,6 @@
-import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { join } from 'path';
+import { DataSource } from 'typeorm';
 
 dotenv.config();
 
@@ -9,8 +10,8 @@ export const AppDataSource = new DataSource({
   port: parseInt(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  entities: ['src/entity/**/*{.js,.ts}'],
+  database: process.env.DB_NAME,
+  entities: [join(process.cwd(), 'dist/**/*.entity.js')],
   migrations: ['src/migration/**/*{.js,.ts}'],
   subscribers: ['src/subscriber/**/*{.js,.ts}'],
   // do NOT use synchronize: true in real projects

@@ -12,7 +12,7 @@ export const getDbConfig = (): TypeOrmModuleOptions => {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [],
+    entities: [path.join(process.cwd(), 'dist/**/*.entity.js')],
     migrationsTableName: MIGRATIONS_TABLE,
     migrations: [migrationsPath],
     migrationsRun: true,
