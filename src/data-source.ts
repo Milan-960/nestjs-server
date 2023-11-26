@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   migrations: ['src/migration/**/*{.js,.ts}'],
   subscribers: ['src/subscriber/**/*{.js,.ts}'],
   // do NOT use synchronize: true in real projects
-  synchronize: false,
+  synchronize: true,
   logging: true,
   logger: 'advanced-console',
   migrationsRun: true,
