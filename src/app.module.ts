@@ -12,7 +12,6 @@ import { MembersModule } from './member/member.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get('DB_HOST'),
@@ -28,6 +27,7 @@ import { MembersModule } from './member/member.module';
         logger: 'advanced-console',
         migrationsRun: true,
       }),
+      inject: [ConfigService],
     }),
     MembersModule,
   ],
