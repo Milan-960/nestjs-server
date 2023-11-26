@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/main.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js",
+      "method": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE",
+        "HEAD",
+        "CONNECT",
+        "OPTIONS",
+        "TRACE",
+        "PATCH"
+      ],
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
+}
