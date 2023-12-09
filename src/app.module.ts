@@ -22,7 +22,7 @@ import { MembersModule } from './member/member.module';
         entities: [join(process.cwd(), 'dist/**/*.entity.js')],
         migrations: [join(process.cwd(), 'dist/migration/*.js')],
         // do NOT use synchronize: true in real projects
-        synchronize: false,
+        synchronize: true,
         logging: true,
         logger: 'advanced-console',
         migrationsRun: true,

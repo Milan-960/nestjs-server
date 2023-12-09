@@ -1,8 +1,9 @@
 import * as dotenv from 'dotenv';
-import { join } from 'path';
+import * as path from 'path';
 import { DataSource } from 'typeorm';
 
 dotenv.config();
+const migrationsPath = path.join(__dirname, '..', '..', 'migration', '*.ts');
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -11,11 +12,11 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [join(process.cwd(), 'dist/**/*.entity.js')],
-  migrations: [join(process.cwd(), 'dist/migration/*.js')],
+  entities: [path.join(process.cwd(), 'dist/**/*.entity.js')],
+  migrations: [migrationsPath],
   subscribers: ['src/subscriber/**/*{.js,.ts}'],
   // do NOT use synchronize: true in real projects
-  synchronize: false,
+  synchronize: true,
   logging: true,
   logger: 'advanced-console',
   migrationsRun: true,
