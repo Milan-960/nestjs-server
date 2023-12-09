@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [path.join(process.cwd(), 'dist/**/*.entity.js')],
+  entities: [path.join(process.cwd(), '**', '*.entity.{ts,js}')],
   migrations: [migrationsPath],
   subscribers: ['src/subscriber/**/*{.js,.ts}'],
   // do NOT use synchronize: true in real projects
